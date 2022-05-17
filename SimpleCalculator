@@ -1,0 +1,59 @@
+package com.anil.isesimplecalc;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button add;
+    EditText e1,e2;
+    TextView t1;
+    int num1,num2;
+    String s1,s2;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        add=findViewById(R.id.button);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(getNumber())
+                {
+                int sum =num1+num2;
+                t1.setText(Integer.toString(sum));
+                }
+            }
+        });
+    }
+    public boolean getNumber()
+    {
+        e1=(EditText)findViewById(R.id.editTextTextPersonName);
+        e2=(EditText)findViewById(R.id.editTextTextPersonName2);
+        t1=(TextView)findViewById(R.id.textView2);
+
+        s1=e1.getText().toString();
+        s2=e2.getText().toString();
+
+        if((s1.equals(null)&&s2.equals(null)) || (s1.equals(" ") && s2.equals(" ")))
+        {
+            String result = "Please enter values";
+            t1.setText(result);
+        }
+        else
+        {
+            num1=Integer.parseInt(s1);
+            num2=Integer.parseInt(s2);
+        }
+        return true;
+    }
+}
